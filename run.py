@@ -19,12 +19,13 @@ class Grid:
         self.guesses = []
         self.ships = []
 
-    def print_grid(self)
-    """
-    Prints the grid
-    """
-    for row in self.grid:
-        print("".join(row))
+    def print_grid(self):
+        """
+        Prints the grid
+        """
+        for row in self.grid:
+            print("".join(row))
+    
 
     def guess(self, x, y):
         self.guesses.append((x, y))
@@ -36,19 +37,18 @@ class Grid:
         else:
             return "Miss"
 
-    def add_ship(self, x, y, type="computer"):
+    def add_ship(self, x, y,):
         if len(self.ships) >= self.num_ships:
             print("Error. You cannot add more ships!")
         else:
             self.ships.append((x, y))
-            if self.type == "player"
             self.grid[x][y] = "S"
 
     def random_point(self, size):
         """
         Returns random integer between 0 and size - 1
         """
-        return randint(0, size - 1)
+        return randint(0, self.size - 1)
 
     def valid_coordinates(x, y, grid):
 
@@ -58,28 +58,28 @@ class Grid:
 
     def play_game(computer_grid player_grid):
 
-    def new_game(self)
-    """
-    Starts a new_game. Sets the board size and number of ships.
-    """
-    size = 5
-    num_ships = 4
-    scores["computer"] = 0
-    scores["player"] = 0
-    print("-" * 75)
-    print("Welcome to Naval Conquest: BattleGrid")
-    print("Sink or be sunk - the choice is yours! Are you ready to conquer the seas?")
-    print(f"Grid Size: {size}\nNumber of Ships: {num_ships}")
-    print("-" * 75)
-    name = input("Please enter your name: \n")
+    def new_game(self):
+        """
+        Starts a new_game. Sets the board size and number of ships.
+        """
+        size = 5
+        num_ships = 4
+        scores["computer"] = 0
+        scores["player"] = 0
+        print("-" * 75)
+        print("Welcome to Naval Conquest: BattleGrid")
+        print("Sink or be sunk - the choice is yours! Are you ready to conquer the seas?")
+        print(f"Grid Size: {size}\nNumber of Ships: {num_ships}")
+        print("-" * 75)
+        name = input("Please enter your name: \n")
 
-    computer_grid = Grid(size, num_ships, "Computer", type="computer")
-    player_grid = Grid(size, num_ships, player_name, type="computer")
+        computer_grid = Grid(size, num_ships, "Computer", type="computer")
+        player_grid = Grid(size, num_ships, player_name, type="computer")
 
-    for _ in range(num_ships):
-        populate_grid(player_grid)
-        populate_grid(computer_grid)
+        for _ in range(num_ships):
+            populate_grid(player_grid)
+            populate_grid(computer_grid)
 
-    play_game(computer_grid, player_grid
+        play_game(computer_grid, player_grid
 
 new_game()
