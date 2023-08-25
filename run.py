@@ -24,6 +24,28 @@ class Grid:
     for row in self.grid:
         print("".join(row))
 
-    
+    def guess(self, x, y):
+        self.guesses.append((x, y))
+        self.grid[x][y] = "X"
+
+        if (x, y) in self.ships:
+            self.grid[x][y] = "*"
+            return "Hit"
+        else:
+            return "Miss"
+
+    def random_point(self, size):
+        """
+        Returns random integer between 0 and size - 1
+        """
+        return randint(0, size - 1)
+
+    def add_ship(self, x, y, type="computer"):
+        if len(self.ships) >= self.num_ships:
+            print("Error. You cannot add more ships!")
+        else:
+            self.ships.append((x, y))
+            if self.type == "player"
+            self.grid[x][y] = "S"
 
 
