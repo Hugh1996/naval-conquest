@@ -17,4 +17,13 @@ class Grid:
         self.guesses = []
         self.ships = []
 
+    def print_grid(self)
+    """
+    Prints the grid
+    """
+    for row in self.grid:
+        print("".join(row))
+
+    
+
 
