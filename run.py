@@ -1,3 +1,10 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+from random import randint
+
+class Grid:
+    """
+    Main grid class. Sets the grid size, 
+    the number of ships, 
+    the player's name and the board type
+    Has methods for adding ships and guesses 
+    and printing the board.
+    """
