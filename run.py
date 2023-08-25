@@ -56,3 +56,16 @@ class Grid:
     """
     size = 5
     num_ships = 4
+    scores["computer"] = 0
+    scores["player"] = 0
+    print("-" * 75)
+    print("Welcome to Naval Conquest: BattleGrid")
+    print("Sink or be sunk - the choice is yours! Are you ready to conquer the seas?")
+    print(f"Grid Size: {size}\nNumber of Ships: {num_ships}")
+    print("-" * 75)
+    name = input("Please enter your name: \n")
+
+    computer_grid = Grid(size, num_ships, "Computer", type="computer")
+    player_grid = Grid(size, num_ships, player_name, type="computer")
+
+new_game()
