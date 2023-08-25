@@ -1,5 +1,7 @@
 from random import randint
 
+scores = {"computer": 0, "player": 0}
+
 class Grid:
     """
     Main grid class. Sets the grid size, 
@@ -48,4 +50,9 @@ class Grid:
             if self.type == "player"
             self.grid[x][y] = "S"
 
-
+    def new_game(self)
+    """
+    Starts a new_game. Sets the board size and number of ships.
+    """
+    size = 5
+    num_ships = 4
