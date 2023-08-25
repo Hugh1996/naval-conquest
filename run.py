@@ -36,12 +36,6 @@ class Grid:
         else:
             return "Miss"
 
-    def random_point(self, size):
-        """
-        Returns random integer between 0 and size - 1
-        """
-        return randint(0, size - 1)
-
     def add_ship(self, x, y, type="computer"):
         if len(self.ships) >= self.num_ships:
             print("Error. You cannot add more ships!")
@@ -49,6 +43,20 @@ class Grid:
             self.ships.append((x, y))
             if self.type == "player"
             self.grid[x][y] = "S"
+
+    def random_point(self, size):
+        """
+        Returns random integer between 0 and size - 1
+        """
+        return randint(0, size - 1)
+
+    def valid_coordinates(x, y, grid):
+
+    def populate_grid(grid):
+
+    def make_guess(grid):
+
+    def play_game(computer_grid player_grid):
 
     def new_game(self)
     """
@@ -67,5 +75,11 @@ class Grid:
 
     computer_grid = Grid(size, num_ships, "Computer", type="computer")
     player_grid = Grid(size, num_ships, player_name, type="computer")
+
+    for _ in range(num_ships):
+        populate_grid(player_grid)
+        populate_grid(computer_grid)
+
+    play_game(computer_grid, player_grid
 
 new_game()
