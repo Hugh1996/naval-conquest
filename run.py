@@ -75,14 +75,14 @@ class Grid:
         """
         Plays the game between player and computer
         """
-        print("Your turn:")
+        print("{self.name}s turn!")
         while True:
             player_x = int(input("Enter row:"))
             player_y = int(input("Enter column:"))
             if player_grid.valid_coordinates(player_x, player_y) and (player_x, player_y) not in player_grid.guesses:
                 break
             else:
-                print("Invalid input or already guessed. Try again.")
+                print("Input must be between 0 and 4")
 
             result = computer_grid.guess(player_x, player_y)
             if result == "Hit":
@@ -95,19 +95,19 @@ class Grid:
                 if (computer_x, computer_y) not in computer_grid.guesses:
                     break
 
-            result = player_grid.guess(computer_x, computer_y)
-            if result == "Hit":
-                scores["computer"] += 1
+                result = player_grid.guess(computer_x, computer_y)
+                if result == "Hit":
+                    scores["computer"] += 1
 
-            print("Player's Grid:")
-            player_grid.print_grid()
-            print("Computer's Grid:")
-            computer_grid.print_grid()
+                print("Player's Grid:")
+                player_grid.print_grid()
+                print("Computer's Grid:")
+                computer_grid.print_grid()
 
-        if scores["player"] == computer_grid.num_ships:
-            print("Congratlulations! You win!")
-        else:
-            print("Computer wins! Better luck next time!")
+            if scores["player"] == computer_grid.num_ships:
+                print("Congratlulations! You win!")
+            else:
+                print("Computer wins! Better luck next time!")
 
 def new_game():
     """
