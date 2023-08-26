@@ -90,9 +90,11 @@ class Grid:
             scores["player"] += 1
             print(f"You guessed: ({player_x}, {player_y})")
             print("Well done! You've sunk an enemy ship!")
+            print("-" * 75)
         else:
             print(f"You guessed: ({player_x}, {player_y})")
             print("You missed! Try again!")
+            print("-" * 75)
 
         print("Computer's Turn:")
         while True:
@@ -106,14 +108,11 @@ class Grid:
                 scores["computer"] += 1
                 print(f"Computer guessed: ({computer_x}, {computer_y})")
                 print("Oh no! Computer sunk one of your ships!")
+                print("-" * 75)
             else: 
                 print(f"Computer guessed: ({computer_x}, {computer_y})")
                 print("Good news! Computer missed!")
-
-            print("Player's Grid:")
-            player_grid.print_grid()
-            print("Computer's Grid:")
-            computer_grid.print_grid()
+                print("-" * 75)
 
         if scores["player"] == computer_grid.num_ships:
             print("Congratulations! You have defeated the enemy!")
