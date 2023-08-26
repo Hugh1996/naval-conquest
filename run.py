@@ -23,6 +23,7 @@ class Grid:
         """
         Prints the grid
         """
+        print(f"{self.name}'s Grid:")
         for row in self.grid:
             print(" ".join(row))
 
@@ -84,30 +85,30 @@ class Grid:
             else:
                 print("Input must be between 0 and 4")
 
-            result = computer_grid.guess(player_x, player_y)
+        result = computer_grid.guess(player_x, player_y)
+        if result == "Hit":
+            scores["player"] += 1
+
+        print("Computer's Turn:")
+        while True:
+            computer_x = computer_grid.random_point()
+            computer_y = computer_grid.random_point()
+            if (computer_x, computer_y) not in computer_grid.guesses:
+                break
+
+            result = player_grid.guess(computer_x, computer_y)
             if result == "Hit":
-                scores["player"] += 1
+                scores["computer"] += 1
 
-            print("Computer's Turn:")
-            while True:
-                computer_x = computer_grid.random_point()
-                computer_y = computer_grid.random_point()
-                if (computer_x, computer_y) not in computer_grid.guesses:
-                    break
+            print("Player's Grid:")
+            player_grid.print_grid()
+            print("Computer's Grid:")
+            computer_grid.print_grid()
 
-                result = player_grid.guess(computer_x, computer_y)
-                if result == "Hit":
-                    scores["computer"] += 1
-
-                print("Player's Grid:")
-                player_grid.print_grid()
-                print("Computer's Grid:")
-                computer_grid.print_grid()
-
-            if scores["player"] == computer_grid.num_ships:
-                print("Congratlulations! You win!")
-            else:
-                print("Computer wins! Better luck next time!")
+        if scores["player"] == computer_grid.num_ships:
+            print("Congratulations! You win!")
+        else:
+            print("Computer wins! Better luck next time!")
 
 def new_game():
     """
@@ -123,13 +124,17 @@ def new_game():
     print(f"Grid Size: {size}\nNumber of Ships: {num_ships}")
     print("-" * 75)
     player_name = input("Please enter your name: \n")
+    print("-" * 75)
 
     computer_grid = Grid(size, num_ships, "Computer", type="computer")
     player_grid = Grid(size, num_ships, player_name, type="player")
 
-    player_grid.populate_grid()
-    computer_grid.populate_grid()
+    player_grid.populate_grid() # Populates player ships randomly on grid
+    computer_grid.populate_grid() # Populates computer ships randomly on grid
 
-    player_grid.play_game(player_grid)
+    player_grid.print_grid() # Print player grid
+    computer_grid.print_grid() # Prints computer grid
 
-new_game()
+    player_grid.play_game(player_grid) # Initiates game loop
+
+new_game() # Initiates new game
