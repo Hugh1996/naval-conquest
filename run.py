@@ -71,11 +71,11 @@ class Grid:
                 x, y = self.random_point(), self.random_point()
             self.add_ship(x, y)
 
-    def play_game(self, computer_grid, player_grid):
+    def play_game(computer_grid, player_grid):
         """
         Plays the game between player and computer
         """
-        print("{self.name}s turn!")
+        print(f"{player_grid.name}, choose your coordinates!")
         while True:
             player_x = int(input("Enter row:"))
             player_y = int(input("Enter column:"))
@@ -130,6 +130,6 @@ def new_game():
     player_grid.populate_grid()
     computer_grid.populate_grid()
 
-    player_grid.play_game(player_grid, computer_grid)
+    player_grid.play_game(player_grid)
 
 new_game()
