@@ -67,27 +67,34 @@ class Grid:
         """
         for _ in range(self.num_ships):
             x, y = self.random_point(), self.random_point()
-            print(f"Trying to add ship at ({x}, {y})")
             while (x, y) in self.ships:
                 x, y = self.random_point(), self.random_point()
-                print(f"Collision at ({x}, {y}), retrying...")
             self.add_ship(x, y)
 
     def play_game(self, computer_grid, player_grid):
         """
         Plays the game between player and computer
         """
-        while scores["computer"] < player_grid.num_ships and scores["player"] < computer_grid.num_ships:
-            print("Your turn:")
+        print("Your turn:")
+        while True:
             player_x = int(input("Enter row:"))
             player_y = int(input("Enter column:"))
+            if player_grid.valid_coordinates(player_x, player_y) and (player_x, player_y) not in player_grid.guesses:
+                break
+            else:
+                print("Invalid input or already guessed. Try again.")
+
             result = computer_grid.guess(player_x, player_y)
             if result == "Hit":
                 scores["player"] += 1
 
             print("Computer's Turn:")
-            computer_x = computer_grid.random_point()
-            computer_y = computer_grid.random_point()
+            while True:
+                computer_x = computer_grid.random_point()
+                computer_y = computer_grid.random_point()
+                if (computer_x, computer_y) not in computer_grid.guesses:
+                    break
+
             result = player_grid.guess(computer_x, computer_y)
             if result == "Hit":
                 scores["computer"] += 1
@@ -123,6 +130,6 @@ def new_game():
     player_grid.populate_grid()
     computer_grid.populate_grid()
 
-    play_game(computer_grid, player_grid)
+    player_grid.play_game(player_grid, computer_grid)
 
 new_game()
