@@ -41,7 +41,8 @@ class Grid:
             print("Error. You cannot add more ships!")
         else:
             self.ships.append((x, y))
-            self.grid[x][y] = "S"
+            if self.type == "player":
+                self.grid[x][y] = "S"
 
     def random_point(self):
         """
@@ -66,15 +67,17 @@ class Grid:
         """
         for _ in range(self.num_ships):
             x, y = self.random_point(), self.random_point()
+            print(f"Trying to add ship at ({x}, {y})")
             while (x, y) in self.ships:
                 x, y = self.random_point(), self.random_point()
+                print(f"Collision at ({x}, {y}), retrying...")
             self.add_ship(x, y)
 
-    def play_game(computer_grid, player_grid):
+    def play_game(self, computer_grid, player_grid):
         """
         Plays the game between player and computer
         """
-        while scores["computer"] < player_grid.num_ships and sores["player"] < computer_grid.num_ships:
+        while scores["computer"] < player_grid.num_ships and scores["player"] < computer_grid.num_ships:
             print("Your turn:")
             player_x = int(input("Enter row:"))
             player_y = int(input("Enter column:"))
@@ -98,7 +101,7 @@ class Grid:
             print("Congratlulations! You win!")
         else:
             print("Computer wins! Better luck next time!")
-            
+
 def new_game():
     """
     Starts a new game. Sets the board size and number of ships.
@@ -117,8 +120,9 @@ def new_game():
     computer_grid = Grid(size, num_ships, "Computer", type="computer")
     player_grid = Grid(size, num_ships, player_name, type="player")
 
-    for _ in range(num_ships):
-        player_grid.populate_grid()
-        computer_grid.populate_grid()
+    player_grid.populate_grid()
+    computer_grid.populate_grid()
+
+    play_game(computer_grid, player_grid)
 
 new_game()
