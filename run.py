@@ -26,7 +26,7 @@ class Grid:
         """
         print(f"{self.name}'s Grid:")
         for row in self.grid:
-            print(" ".join(row))
+            print("".join(row))
 
     def guess(self, x, y):
         """
@@ -35,7 +35,7 @@ class Grid:
         self.guesses.append((x, y))
 
         if (x, y) in self.ships:
-            self.grid[x][y] = "X"
+            self.grid[x][y] = "*"
             return "Successful Hit!"
         else:
             return "Missed!"
