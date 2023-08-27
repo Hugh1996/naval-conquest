@@ -32,17 +32,20 @@ class Grid:
 
         if (x, y) in self.ships:
             self.grid[x][y] = "X"
-            return "Hit"
+            return "Successful Hit!"
         else:
-            return "Miss"
+            return "Missed!"
 
     def add_ship(self, x, y, type="computer"):
+        """
+        Places ships on x, y axis
+        """
         if len(self.ships) >= self.num_ships:
             print("Error: You cannot add more ships!")
         else:
-            self.ships.append((x, y))
+            self.ships.append((x, y)) # Add the ship's coordinates to the lsit of ships
             if self.type == "player":
-                self.grid[x][y] = "S"
+                self.grid[x][y] = "S" # If player, marks the grid cell with an "S" for ship
 
     def populate_grid(self):
         """
@@ -66,7 +69,7 @@ def valid_coordinates(x, y, grid):
     Returns True if valid
     """
     try:
-        self.grid[x][y]
+        grid.grid[x][y]
         return True
     except IndexError:
         return False
@@ -101,12 +104,12 @@ def play_game(computer_grid, player_grid):
 
         player_x, player_y = player_input(computer_grid)
         player_guess_result = computer_grid.guess(player_x, player_y)
-        print(f"{player_grid.name} guessed: ({player_x}, {player_y}")
+        print(f"{player_grid.name} guessed: ({player_x}, {player_y})")
         print(f"{player_grid.name} {player_guess_result}.")
 
         computer_x, computer_y = random_point(player_grid.size), random_point(player_grid.size)
         computer_guess_result = player_grid.guess(computer_x, computer_y)
-        print(f"Computer guessed: ({computer_x}, {computer_y}")
+        print(f"Computer guessed: ({computer_x}, {computer_y})")
         print(f"Computer {computer_guess_result}.")
 
         if player_guess_result == "Hit":
@@ -118,6 +121,10 @@ def play_game(computer_grid, player_grid):
         print(f"After this round, the scores are: ")
         print(f"{player_grid.name}: {scores[player_grid.name]}. Computer: {scores['computer']}")
         print("-" * 75)
+
+        continue_playing = input("Enter any key to continue or 'n' to quit:")
+        if continue_playing.lower() == 'n':
+            break
 
 def new_game():
     """
@@ -139,8 +146,8 @@ def new_game():
     player_grid = Grid(size, num_ships, player_name, type="player")
 
     for _ in range(num_ships):
-        populate_grid(player_grid)
-        populate_grid(computer_grid)
+        player_grid.populate_grid()
+        computer_grid.populate_grid()
 
     play_game(computer_grid, player_grid) # Initiates game loop
 
