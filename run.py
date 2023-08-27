@@ -118,8 +118,13 @@ def play_game(computer_grid, player_grid):
 
         if player_guess_result == "Successful Hit":
             scores[player_grid.name] += 1
+        elif player_guess_result == "Missed!":
+            scores[player_grid.name] += 0
+
         if computer_guess_result == "Successful Hit":
             scores["computer"] += 1
+        elif computer_guess_result == "Missed!":
+            scores["computer"] += 0
          
         print("-" * 75)
         print(f"After this round, the scores are: ")
