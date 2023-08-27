@@ -18,6 +18,7 @@ class Grid:
         self.type = type
         self.guesses = []
         self.ships = []
+        
 
     def print_grid(self):
         """
@@ -109,31 +110,34 @@ def play_game(computer_grid, player_grid):
         player_x, player_y = player_input(computer_grid)
         player_guess_result = computer_grid.guess(player_x, player_y)
         print(f"{player_grid.name} guessed: ({player_x}, {player_y})")
-        print(f"{player_grid.name} {player_guess_result}.")
+        print(f"{player_grid.name} {player_guess_result}")
 
         computer_x, computer_y = random_point(player_grid.size), random_point(player_grid.size)
         computer_guess_result = player_grid.guess(computer_x, computer_y)
         print(f"Computer guessed: ({computer_x}, {computer_y})")
-        print(f"Computer {computer_guess_result}.")
+        print(f"Computer {computer_guess_result}")
 
-        if player_guess_result == "Successful Hit":
-            scores[player_grid.name] += 1
+        if player_guess_result == "Successful Hit!":
+            scores["player"] += 1
         elif player_guess_result == "Missed!":
-            scores[player_grid.name] += 0
+            scores["player"] += 0
 
-        if computer_guess_result == "Successful Hit":
+        if computer_guess_result == "Successful Hit!":
             scores["computer"] += 1
         elif computer_guess_result == "Missed!":
             scores["computer"] += 0
          
         print("-" * 75)
         print(f"After this round, the scores are: ")
-        print(f"{player_grid.name}: {scores[player_grid.name]}. Computer: {scores['computer']}")
+        print("Player Name:", player_grid.name)
+        print(f"{player_grid.name}: {scores['player']} Computer: {scores['computer']}")
         print("-" * 75)
 
         continue_playing = input("Enter any key to continue or 'n' to quit:")
         if continue_playing.lower() == 'n':
             break
+
+        print("Keys in scores dictionary:", scores.keys())
 
 def new_game():
     """
