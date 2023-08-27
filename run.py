@@ -1,6 +1,6 @@
 from random import randint
 
-scores = {"computer": 0, "player": 0}
+scores = {"computer": 0, "player": 0} # Keeps track of player's scores
 
 class Grid:
     """
@@ -28,6 +28,9 @@ class Grid:
             print(" ".join(row))
 
     def guess(self, x, y):
+        """
+        Handles player's guess and updates the grid
+        """
         self.guesses.append((x, y))
 
         if (x, y) in self.ships:
@@ -59,14 +62,13 @@ class Grid:
 
 def random_point(size):
     """
-    Returns random integer between 0 and size - 1
+    Returns random integer within grid size
     """
     return randint(0, size - 1)
 
 def valid_coordinates(x, y, grid):
     """
-    Checks if x and y are valid on the grid
-    Returns True if valid
+    Checks if coordinates are within grid boundaries
     """
     try:
         grid.grid[x][y]
@@ -76,7 +78,7 @@ def valid_coordinates(x, y, grid):
 
 def player_input(grid):
     """
-    Get and process players input
+    Get and validates player's input
     """
     while True:
         try:
@@ -91,7 +93,9 @@ def player_input(grid):
 
 def play_game(computer_grid, player_grid):
     """
-    Plays the game between player and computer
+    Executes game loop
+    Players take turn making guesses
+    Grid and scores updated accordingly
     """
     print("-" * 75)
     print(f"{player_grid.name}, it's time to attack!")
@@ -112,9 +116,9 @@ def play_game(computer_grid, player_grid):
         print(f"Computer guessed: ({computer_x}, {computer_y})")
         print(f"Computer {computer_guess_result}.")
 
-        if player_guess_result == "Hit":
+        if player_guess_result == "Successful Hit":
             scores[player_grid.name] += 1
-        if computer_guess_result == "Hit":
+        if computer_guess_result == "Successful Hit":
             scores["computer"] += 1
          
         print("-" * 75)
