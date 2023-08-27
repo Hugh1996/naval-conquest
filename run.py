@@ -82,15 +82,42 @@ def player_input(grid):
             if valid_coordinates(x, y, grid):
                 return x, y
             else:
-                print("Invalid coordinates. Try again")
+                print("Invalid coordinates. Input must be between 0 and 4.")
         except ValueError:
-            print("Invalid input. Please enter numbers")
+            print("Invalid input. Please enter a whole number.")
 
 def play_game(computer_grid, player_grid):
     """
     Plays the game between player and computer
     """
-    print(f"{player_grid.name}, choose your coordinates!")
+    print("-" * 75)
+    print(f"{player_grid.name}, it's time to attack!")
+
+    while True:
+        print("-" * 75)
+        player_grid.print_grid()
+        print("-" * 75)
+        computer_grid.print_grid()
+
+        player_x, player_y = player_input(computer_grid)
+        player_guess_result = computer_grid.guess(player_x, player_y)
+        print(f"{player_grid.name} guessed: ({player_x}, {player_y}")
+        print(f"{player_grid.name} {player_guess_result}.")
+
+        computer_x, computer_y = random_point(player_grid.size), random_point(player_grid.size)
+        computer_guess_result = player_grid.guess(computer_x, computer_y)
+        print(f"Computer guessed: ({computer_x}, {computer_y}")
+        print(f"Computer {computer_guess_result}.")
+
+        if player_guess_result == "Hit":
+            scores[player_grid.name] += 1
+        if computer_guess_result == "Hit":
+            scores["computer"] += 1
+         
+        print("-" * 75)
+        print(f"After this round, the scores are: ")
+        print(f"{player_grid.name}: {scores[player_grid.name]}. Computer: {scores['computer']}")
+        print("-" * 75)
 
 def new_game():
     """
