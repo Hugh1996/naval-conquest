@@ -31,102 +31,66 @@ class Grid:
         self.guesses.append((x, y))
 
         if (x, y) in self.ships:
-            self.grid[x][y] = "*"
+            self.grid[x][y] = "X"
             return "Hit"
         else:
-            self.grid[x][y] = "X"
             return "Miss"
 
-    def add_ship(self, x, y):
+    def add_ship(self, x, y, type="computer"):
         if len(self.ships) >= self.num_ships:
-            print("Error. You cannot add more ships!")
+            print("Error: You cannot add more ships!")
         else:
             self.ships.append((x, y))
             if self.type == "player":
                 self.grid[x][y] = "S"
 
-    def random_point(self):
-        """
-        Returns random integer between 0 and size - 1
-        """
-        return randint(0, self.size - 1)
-
-    def valid_coordinates(self, x, y):
-        """
-        Checks if x and y are valid on the grid
-        Returns True if valid
-        """
-        try:
-            self.grid[x][y]
-            return True
-        except IndexError:
-            return False
-
     def populate_grid(self):
         """
         Place ships randomly on the grid
         """
-        for _ in range(self.num_ships):
-            x, y = self.random_point(), self.random_point()
-            while (x, y) in self.ships:
-                x, y = self.random_point(), self.random_point()
-            self.add_ship(x, y)
+        while len(self.ships) < self.num_ships:
+            x = random_point(self.size)
+            y = random_point(self.size)
+            if (x, y) not in self.ships:
+                self.add_ship(x, y)
 
-    def play_game(computer_grid, player_grid):
-        """
-        Plays the game between player and computer
-        """
-        print(f"{player_grid.name}, choose your coordinates!")
+def random_point(size):
+    """
+    Returns random integer between 0 and size - 1
+    """
+    return randint(0, size - 1)
 
-        while scores["computer"] < computer_grid.num_ships and scores["player"] < player_grid.num_ships:
+def valid_coordinates(x, y, grid):
+    """
+    Checks if x and y are valid on the grid
+    Returns True if valid
+    """
+    try:
+        self.grid[x][y]
+        return True
+    except IndexError:
+        return False
 
-            print(f"{player_grid.name}'s Grid:")
-            player_grid.print_grid()
-            print("\nComputer's Grid:")
-            computer_grid.print_grid()
-
-            while True:
-                player_x = int(input("Enter row:"))
-                player_y = int(input("Enter column:"))
-                if player_grid.valid_coordinates(player_x, player_y) and (player_x, player_y) not in player_grid.guesses:
-                    break
-                else:
-                    print("Input must be between 0 and 4")
-
-            result = computer_grid.guess(player_x, player_y)
-            if result == "Hit":
-                scores["player"] += 1
-                print(f"You guessed: ({player_x}, {player_y})")
-                print("Well done! You've sunk an enemy ship!")
-                print("-" * 75)
+def player_input(grid):
+    """
+    Get and process players input
+    """
+    while True:
+        try:
+            x = int(input("Guess a row: "))
+            y = int(input("Guess a column: "))
+            if valid_coordinates(x, y, grid):
+                return x, y
             else:
-                print(f"You guessed: ({player_x}, {player_y})")
-                print("You missed! Try again!")
-                print("-" * 75)
+                print("Invalid coordinates. Try again")
+        except ValueError:
+            print("Invalid input. Please enter numbers")
 
-            if scores["player"] == computer_grid.num_ships:
-                print("Congratulations! You have defeated the enemy!")
-                break
-
-            print("Computer's Turn:")
-            computer_x, computer_y = computer_grid.random_point(), computer_grid.random_point()
-            while (computer_x, computer_y) in computer_grid.guesses:
-                computer_x, computer_y = computer_grid.random_point(), computer_grid.random_point()
-
-            result = player_grid.guess(computer_x, computer_y)
-            if result == "Hit":
-                scores["computer"] += 1
-                print(f"Computer guessed: ({computer_x}, {computer_y})")
-                print("Oh no! Computer sunk one of your ships!")
-                print("-" * 75)
-            else: 
-                print(f"Computer guessed: ({computer_x}, {computer_y})")
-                print("Good news! Computer missed!")
-                print("-" * 75)
-
-            if scores["player"] == computer_grid.num_ships:
-                print("Congratulations! You have defeated the enemy!")
-                break
+def play_game(computer_grid, player_grid):
+    """
+    Plays the game between player and computer
+    """
+    print(f"{player_grid.name}, choose your coordinates!")
 
 def new_game():
     """
@@ -147,12 +111,10 @@ def new_game():
     computer_grid = Grid(size, num_ships, "Computer", type="computer")
     player_grid = Grid(size, num_ships, player_name, type="player")
 
-    player_grid.populate_grid() # Populates player ships randomly on grid
-    computer_grid.populate_grid() # Populates computer ships randomly on grid
+    for _ in range(num_ships):
+        populate_grid(player_grid)
+        populate_grid(computer_grid)
 
-    player_grid.print_grid() # Print player grid
-    computer_grid.print_grid() # Prints computer grid
-
-    player_grid.play_game(player_grid) # Initiates game loop
+    play_game(computer_grid, player_grid) # Initiates game loop
 
 new_game() # Initiates new game
