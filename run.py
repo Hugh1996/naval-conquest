@@ -1,3 +1,4 @@
+import random
 from random import randint
 
 scores = {"computer": 0, "player": 0} # Keeps track of player's scores
