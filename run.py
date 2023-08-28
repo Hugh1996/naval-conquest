@@ -1,7 +1,9 @@
 import random
 from random import randint
 
-scores = {"computer": 0, "player": 0} # Keeps track of player's scores
+# Keeps track of player's scores
+scores = {"computer": 0, "player": 0}
+
 
 class Grid:
     """
@@ -11,6 +13,7 @@ class Grid:
     Has methods for adding ships and guesses
     and printing the board.
     """
+
     def __init__(self, size, num_ships, name, type):
         self.size = size
         self.grid = [["." for x in range(size)] for y in range(size)]
@@ -19,7 +22,6 @@ class Grid:
         self.type = type
         self.guesses = []
         self.ships = []
-        
 
     def print_grid(self):
         """
@@ -36,7 +38,7 @@ class Grid:
         self.guesses.append((x, y))
 
         if (x, y) in self.ships:
-            self.grid[x][y] = "*"
+            self.grid[x][y] = "x"
             return "Successful Hit!"
         else:
             return "Missed!"
@@ -48,9 +50,11 @@ class Grid:
         if len(self.ships) >= self.num_ships:
             print("Error: You cannot add more ships!")
         else:
-            self.ships.append((x, y)) # Add the ship's coordinates to the lsit of ships
+            # Add the ship's coordinates to the lsit of ships
+            self.ships.append((x, y))
             if self.type == "player":
-                self.grid[x][y] = "S" # If player, marks the grid cell with an "S" for ship
+                # If player, marks the grid cell with an "S" for ship
+                self.grid[x][y] = "s"
 
     def populate_grid(self):
         """
@@ -62,11 +66,13 @@ class Grid:
             if (x, y) not in self.ships:
                 self.add_ship(x, y)
 
+
 def random_point(size):
     """
     Returns random integer within grid size
     """
     return randint(0, size - 1)
+
 
 def valid_coordinates(x, y, grid):
     """
@@ -77,6 +83,7 @@ def valid_coordinates(x, y, grid):
         return True
     except IndexError:
         return False
+
 
 def player_input(grid):
     """
@@ -93,6 +100,7 @@ def player_input(grid):
         except ValueError:
             print("Invalid input. Please enter a whole number.")
 
+
 def play_game(computer_grid, player_grid):
     """
     Executes game loop
@@ -108,12 +116,15 @@ def play_game(computer_grid, player_grid):
         print("-" * 75)
         computer_grid.print_grid()
 
-        player_x, player_y = player_input(computer_grid)
+        player_x, player_y = player_input(player_grid)
         player_guess_result = computer_grid.guess(player_x, player_y)
         print(f"{player_grid.name} guessed: ({player_x}, {player_y})")
         print(f"{player_grid.name} {player_guess_result}")
 
-        computer_x, computer_y = random_point(player_grid.size), random_point(player_grid.size)
+        computer_x, computer_y = (
+            random_point(computer_grid.size),
+            random_point(computer_grid.size)
+        )
         computer_guess_result = player_grid.guess(computer_x, computer_y)
         print(f"Computer guessed: ({computer_x}, {computer_y})")
         print(f"Computer {computer_guess_result}")
@@ -127,11 +138,12 @@ def play_game(computer_grid, player_grid):
             scores["computer"] += 1
         elif computer_guess_result == "Missed!":
             scores["computer"] += 0
-         
+
         print("-" * 75)
         print(f"After this round, the scores are: ")
         print("Player Name:", player_grid.name)
-        print(f"{player_grid.name}: {scores['player']} Computer: {scores['computer']}")
+        print(f"{player_grid.name}: {scores['player']} "
+              f"Computer: {scores['computer']}")
         print("-" * 75)
 
         continue_playing = input("Enter any key to continue or 'n' to quit:")
@@ -139,6 +151,7 @@ def play_game(computer_grid, player_grid):
             break
 
         print("Keys in scores dictionary:", scores.keys())
+
 
 def new_game():
     """
@@ -150,7 +163,7 @@ def new_game():
     scores["player"] = 0
     print("-" * 75)
     print("Welcome to Naval Conquest: BattleGrid")
-    print("Sink or be sunk - the choice is yours! Are you ready to conquer the seas?")
+    print("Sink or be sunk - the choice is yours! Ready to conquer the seas?")
     print(f"Grid Size: {size}\nNumber of Ships: {num_ships}")
     print("-" * 75)
     player_name = input("Please enter your name: \n")
@@ -163,6 +176,9 @@ def new_game():
         player_grid.populate_grid()
         computer_grid.populate_grid()
 
-    play_game(computer_grid, player_grid) # Initiates game loop
+    # Initiates game loop
+    play_game(computer_grid, player_grid)
 
-new_game() # Initiates new game
+
+# Initiates new game
+new_game()
