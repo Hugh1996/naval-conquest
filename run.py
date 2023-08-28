@@ -41,9 +41,10 @@ class Grid:
         self.guesses.append((x, y))
 
         if (x, y) in self.ships:
-            self.grid[x][y] = "x"
+            self.grid[x][y] = "*"
             return "Successful Hit!"
         else:
+            self.grid[x][y] = "x"
             return "Missed!"
 
     def add_ship(self, x, y, type="computer"):
