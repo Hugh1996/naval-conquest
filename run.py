@@ -35,6 +35,9 @@ class Grid:
         """
         Handles player's guess and updates the grid
         """
+        if (x, y) in self.guesses:
+            return "Already guessed!"
+
         self.guesses.append((x, y))
 
         if (x, y) in self.ships:
@@ -116,7 +119,15 @@ def play_game(computer_grid, player_grid):
         print("-" * 75)
         computer_grid.print_grid()
 
-        player_x, player_y = player_input(player_grid)
+        while True:
+            player_x, player_y = player_input(player_grid)
+
+            if (player_x, player_y) in player_grid.guesses:
+                print("You've already guessed those coordinates. Try again!")
+            else:
+                player_grid.guesses.append((player_x, player_y))
+                break
+
         player_guess_result = computer_grid.guess(player_x, player_y)
         print(f"{player_grid.name} guessed: ({player_x}, {player_y})")
         print(f"{player_grid.name} {player_guess_result}")
@@ -141,7 +152,6 @@ def play_game(computer_grid, player_grid):
 
         print("-" * 75)
         print(f"After this round, the scores are: ")
-        print("Player Name:", player_grid.name)
         print(f"{player_grid.name}: {scores['player']} "
               f"Computer: {scores['computer']}")
         print("-" * 75)
