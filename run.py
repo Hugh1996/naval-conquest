@@ -100,7 +100,10 @@ def player_input(grid):
             if valid_coordinates(x, y, grid):
                 return x, y
             else:
-                print("Invalid coordinates. Input must be between 0 and 4.")
+                print(f"Invalid coordinates. Size must be between 0 and {grid.size - 1}")
+                print("-" * 75)
+                print(f"Ships must be between {grid.num_ships}.")
+                print("-" * 75)
         except ValueError:
             print("Invalid input. Please enter a whole number.")
 
@@ -164,21 +167,39 @@ def play_game(computer_grid, player_grid):
         print("Keys in scores dictionary:", scores.keys())
 
 
+def size_ship_input(prompt, min_value, max_value, default_value):
+    """
+    Sets default size and ship number
+    Ensures the player cannot select too large a grid
+    Ensures the player cannot select too many ships
+    """
+    while True:
+        try:
+            user_input = input(prompt)
+            if not user_input:
+                return default_value
+            value = int(user_input)
+            if min_value <= value <= max_value:
+                return value
+            else:
+                print(f"You must select a number between {min_value} and {max_value}")
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+
+
 def new_game():
     """
     Starts a new game. Sets the board size and number of ships.
     """
-    size = 5
-    num_ships = 4
     scores["computer"] = 0
     scores["player"] = 0
     print("-" * 75)
     print("Welcome to Naval Conquest: BattleGrid")
     print("Sink or be sunk - the choice is yours! Ready to conquer the seas?")
-    print(f"Grid Size: {size}\nNumber of Ships: {num_ships}")
     print("-" * 75)
     player_name = input("Please enter your name: \n")
-    print("-" * 75)
+    size = size_ship_input("Enter the grid size (between 4 and 6): ", 4, 6, 5)
+    num_ships = size_ship_input("Enter the number of ships between 3 and 5: ", 3, 5, 4)
 
     computer_grid = Grid(size, num_ships, "Computer", type="computer")
     player_grid = Grid(size, num_ships, player_name, type="player")
