@@ -76,15 +76,33 @@ Each individual battleship is confined to a single square on the game board.
 
 ## Data Model
 
+- A Grid class was use as my model. I opted for Grid as opposed to Board, given the name of the game is Naval Conquest: BattleGrid. Two instances of a board are created, one for the player and one for the computer. 
+
+- The Grid class stores board size, the numer of ships, player's name and the board type. 
+
+- The class also has helper functions which are listed below. 
+
+  - The 'print_grid' method prints the current board. 
+  - The 'guess' method handle's the players guess and updates the board. 
+  - The 'add_ship' method places the battleships on the x, y axis. 
+  - The 'populate_grid' method places ships on the board. 
+
 ## Testing
+
+ - I've given invalid inputs (strings, decimal number, same input twice) to ensure to player is prompted to enter the correct input. 
+ - Tested in both my local terminal and Heroku. 
 
 ### Bugs
 
 #### Solved Bugs
 
+ - When running the game, I was getting KeyError for the player name that was input. I discovered this was due to calling player type as opposed to player_name variable. 
+
 #### Unfixed Bugs
 
 ### Validator Testing
+
+The code was passed thorugh a PEP8 linter and confirmed there are no problems. 
 
 ## Deployment
 
@@ -98,3 +116,6 @@ This project was deployed using Code Instiute's template for Heroku. To deploy, 
 - Click on 'Deploy'
 
 ## Credits
+
+- Code Institute for the deployment Terminal
+- The sample Ultimate Battleship game for inspiration on the layout and structure of the game and code. 
