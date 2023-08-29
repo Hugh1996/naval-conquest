@@ -101,7 +101,7 @@ def player_input(grid):
                 return x, y
             else:
                 print(f"Invalid coordinates. Size must be between 0 "
-                    f"and {grid.size - 1}")
+                      f"and {grid.size - 1}")
                 print("-" * 75)
                 print(f"Ships must be between {grid.num_ships}.")
                 print("-" * 75)
@@ -138,7 +138,7 @@ def play_game(computer_grid, player_grid):
         print(f"{player_grid.name} {player_guess_result}")
 
         # Checks if all computers ships have been sunk and prints result
-        if all((x, y) in player_grid.guesses and (x, y) in player_grid.ships 
+        if all((x, y) in player_grid.guesses and (x, y) in player_grid.ships
                 for x, y in computer_grid.ships):
             print("You have sunk all the enemy ships! You have won!")
             break
@@ -152,7 +152,8 @@ def play_game(computer_grid, player_grid):
         print(f"Computer {computer_guess_result}")
 
         # Checks if all player's ships have been sunk and prints result
-        if all((x, y) in computer_grid.guesses and (x, y) in computer_grid.ships 
+        if all((x, y) in computer_grid.guesses and (x, y)
+                in computer_grid.ships
                 for x, y in player_grid.ships):
             print("Oh no! Your ships have been sunk! The battle is lost!")
             break
@@ -195,7 +196,8 @@ def size_ship_input(prompt, min_value, max_value, default_value):
             if min_value <= value <= max_value:
                 return value
             else:
-                print(f"You must select a number between {min_value} and {max_value}")
+                print(f"You must select a number between {min_value} and
+                      {max_value}")
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
@@ -212,7 +214,7 @@ def new_game():
     print("-" * 75)
     player_name = input("Please enter your name: \n")
     size = size_ship_input("Enter the grid size (between 4 and 6): ", 4, 6, 5)
-    num_ships = size_ship_input("Enter the number of ships between 3 and 5: ", 
+    num_ships = size_ship_input("Enter the number of ships between 3 and 5: ",
                                 3, 5, 4)
 
     computer_grid = Grid(size, num_ships, "Computer", type="computer")
