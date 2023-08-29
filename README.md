@@ -1,32 +1,24 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Naval Conquest: BattleGrid
+Naval Conquest: BattleGrid is a Python terminal game experience, accessible through Heroku.
 
-Welcome,
+The objective is for players to beat the computer by successfully sinking all of the computer's battleships before their own battleships are discovered. 
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
+Each individual battleship is confined to a single square on the game grid. 
 
-## Reminders
+[View the live version here](https://naval-conquest-30afa5133057.herokuapp.com/).
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+![Responsive](./images/responsive.jpg)
 
-## Creating the Heroku app
+## How to Play
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+ - The player enters their name and two grids are randomly generated. By default, the grid dimensions stand at 5x5, housing a total of 4 battleships. Flexibility is embedded, allowing players to adjust both the grid size and the number of battleships according to their preference.
 
-1. `heroku/python`
-2. `heroku/nodejs`
+ - The player can see the location of their battleships, indicated by an 's' for ship. The computer's battleship positions remain concealed from the player.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+ -  Instances of missed shots or inaccurate guesses are marked with 'x', whereas accurate hits are celebrated with '*'.
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+ - In a turn-based manner, players and the computer alternate, attempting to sink the others battleships.
 
-Connect your GitHub repository and deploy as normal.
+ - Victory is achieved upon successfully sinking all of the opponents battleships.
 
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
----
-
-Happy coding!
+ ## Features
