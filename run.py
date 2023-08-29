@@ -178,6 +178,7 @@ def play_game(computer_grid, player_grid):
         if continue_playing.lower() == 'n':
             break
 
+
 def size_ship_input(prompt, min_value, max_value, default_value):
     """
     Sets default size and ship number
