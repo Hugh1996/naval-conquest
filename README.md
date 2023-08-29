@@ -22,3 +22,5 @@ Each individual battleship is confined to a single square on the game grid.
  - Victory is achieved upon successfully sinking all of the opponents battleships.
 
  ## Features
+
+ ![Stage 1 of Game](./images/)
