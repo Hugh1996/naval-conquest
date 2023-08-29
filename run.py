@@ -196,8 +196,8 @@ def size_ship_input(prompt, min_value, max_value, default_value):
             if min_value <= value <= max_value:
                 return value
             else:
-                print(f"You must select a number between {min_value} and
-                      {max_value}")
+                print(f"You must select a number between {min_value} and"
+                      f"{max_value}")
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
