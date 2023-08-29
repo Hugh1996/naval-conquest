@@ -92,6 +92,10 @@ Each individual battleship is confined to a single square on the game board.
  - I've given invalid inputs (strings, decimal number, same input twice) to ensure to player is prompted to enter the correct input. 
  - Tested in both my local terminal and Heroku. 
 
+### Validator Testing
+
+The code was passed thorugh a [PEP8 Linter](https://pep8ci.herokuapp.com/) and confirmed there are no errors found. 
+
 ### Bugs
 
 #### Solved Bugs
@@ -99,10 +103,6 @@ Each individual battleship is confined to a single square on the game board.
  - When running the game, I was getting KeyError for the player name that was input. I discovered this was due to calling player type as opposed to player_name variable. 
 
 #### Unfixed Bugs
-
-### Validator Testing
-
-The code was passed thorugh a PEP8 linter and confirmed there are no problems. 
 
 ## Deployment
 
