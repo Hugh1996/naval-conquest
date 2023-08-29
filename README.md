@@ -3,7 +3,7 @@ Naval Conquest: BattleGrid is a Python terminal game experience, accessible thro
 
 The objective is for players to beat the computer by successfully sinking all of the computer's battleships before their own battleships are discovered. 
 
-Each individual battleship is confined to a single square on the game grid. 
+Each individual battleship is confined to a single square on the game board. 
 
 [View the live version here](https://naval-conquest-30afa5133057.herokuapp.com/).
 
@@ -11,7 +11,7 @@ Each individual battleship is confined to a single square on the game grid.
 
 ## How to Play
 
- - The player enters their name and two grids are randomly generated. 
+ - The player enters their name and two boards are randomly generated. 
 
  - The player can see the location of their battleships, indicated by an 's' for ship. 
 
@@ -23,17 +23,37 @@ Each individual battleship is confined to a single square on the game grid.
 
  ## Features
 
- - ### Select difficulty
+- ### Difficulty Selection
 
-   - By default, the grid dimensions stand at 5x5, housing a total of 4 battleships. Flexibility is embedded, allowing players to adjust both the grid size and the number of battleships according to their preference. Depending on each selection, the level of difficulty and length of the game can be varied.
+  - Players can choose the game's difficulty. 
+  - The default board dimensions are set at 5x5, accomodating 4 battleships.
+  - Flexibility is integrated, enabling players to customize the grid size and the number of battleships. 
+  - Each selection influences the game's difficulty and duration. 
 
-  - ### Randomly generates grid 
+- ### Random Board Generation 
 
-    - In the game of Battleships, ships are randomly placed on grids for both the player and the computer. These grids are displayed to the player's before they input a set of coordinates to target.
-
-    - The computer's battleship positions remain concealed from the player.
+  - The game employs a randomly generated board.
+  - Ships are placed randomly on the board for both the player and the computer.
+  - Players are presented with these boards before selecting their target coordinates. 
+  - The computer's battleship positions are kept concealed from the player. 
 
  ![Stage 1 of Game](./images/first.jpg)
+
+- Gameplay
+
+  - The player competes against the computer. 
+  - The game accepts input from the player and keeps track of the score. 
+
+- Player Input 
+
+  - The player can input their desired coordinates by specifying the numbered row and column, both starting from 0.
+  - Both the player's and computer's selected coordinates are displayed.
+  - A message indicates whether the player or the computer has hit or missed a target.
+
+- Scoring
+
+  - Scores are updated and displayed after each round. 
+  -  The score incrments by 1 when a target is successfully hit. 
 
  ![Stage 2 of Game](./images/two.jpg)
 
