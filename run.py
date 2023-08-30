@@ -36,16 +36,16 @@ class Grid:
         Handles player's guess and updates the grid
         """
         if (x, y) in self.guesses:
-            return "Already guessed!"
+            return "already guessed!"
 
         self.guesses.append((x, y))
 
         if (x, y) in self.ships:
             self.grid[x][y] = "*"
-            return "Successful Hit!"
+            return "successful hit!"
         else:
             self.grid[x][y] = "x"
-            return "Missed!"
+            return "missed!"
 
     def add_ship(self, x, y, type="computer"):
         """
@@ -83,7 +83,7 @@ def valid_coordinates(x, y, grid):
     Checks if coordinates are within grid boundaries
     """
     try:
-        grid.grid[x][y]
+        grid.grid[x][y] == "." and (x, y) not in grid.guesses
         return True
     except IndexError:
         return False
@@ -100,11 +100,7 @@ def player_input(grid):
             if valid_coordinates(x, y, grid):
                 return x, y
             else:
-                print(f"Invalid coordinates. Size must be between 0 "
-                      f"and {grid.size - 1}")
-                print("-" * 75)
-                print(f"Ships must be between {grid.num_ships}.")
-                print("-" * 75)
+                print("Invalid coordinates or already guessed. Try again!")
         except ValueError:
             print("Invalid input. Please enter a whole number.")
 
@@ -125,15 +121,7 @@ def play_game(computer_grid, player_grid):
         player_grid.print_grid()
         computer_grid.print_grid()
 
-        # Gets valid player input
-        while True:
-            player_x, player_y = player_input(player_grid)
-
-            if (player_x, player_y) in player_grid.guesses:
-                print("You've already guessed those coordinates. Try again!")
-            else:
-                player_grid.guesses.append((player_x, player_y))
-                break
+        player_x, player_y = player_input(player_grid)
         
         # Handles player's guess and displays result
         player_guess_result = computer_grid.guess(player_x, player_y)
