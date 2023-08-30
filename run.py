@@ -116,13 +116,13 @@ def play_game(computer_grid, player_grid):
 
     # Player's turn
     while True:
-        
+
         # Displays player's and computer's grid
         player_grid.print_grid()
         computer_grid.print_grid()
 
         player_x, player_y = player_input(player_grid)
-        
+
         # Handles player's guess and displays result
         player_guess_result = computer_grid.guess(player_x, player_y)
         print(f"{player_grid.name} guessed: ({player_x}, {player_y})")
@@ -223,3 +223,4 @@ def new_game():
 
 # Initiates new game
 new_game()
+
