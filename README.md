@@ -53,7 +53,7 @@ Each individual battleship is confined to a single square on the game board.
 - Scoring
 
   - Scores are updated and displayed after each round. 
-  -  The score incrments by 1 when a target is successfully hit. 
+  -  The score increments by 1 when a target is successfully hit. 
 
 - Round Progression
 
@@ -96,7 +96,7 @@ Each individual battleship is confined to a single square on the game board.
 
 - A Grid class was use as my model. I opted for Grid as opposed to Board, given the name of the game is Naval Conquest: BattleGrid. Two instances of a board are created, one for the player and one for the computer. 
 
-- The Grid class stores board size, the numer of ships, player's name and the board type. 
+- The Grid class stores the board size, the number of ships, player's name and the board type. 
 
 - The class also has helper functions which are listed below. 
 
@@ -107,7 +107,7 @@ Each individual battleship is confined to a single square on the game board.
 
 ## Testing
 
- - I've given invalid inputs (strings, decimal number, same input twice) to ensure to player is prompted to enter the correct input. 
+ - I've given invalid inputs (strings, decimal number, same input twice) to ensure the player is prompted to enter the correct input. 
  - I confirmed the victory message shows correctly when all ships are sunk.
  - Tested in both my local terminal and Heroku. 
 
