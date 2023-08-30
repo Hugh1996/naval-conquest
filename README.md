@@ -74,6 +74,9 @@ Each individual battleship is confined to a single square on the game board.
 
 ### Features left to implement
 
+   - For some ships to cover multiple positions, to be partially sunk. 
+   - 
+
 ## Data Model
 
 - A Grid class was use as my model. I opted for Grid as opposed to Board, given the name of the game is Naval Conquest: BattleGrid. Two instances of a board are created, one for the player and one for the computer. 
@@ -90,6 +93,7 @@ Each individual battleship is confined to a single square on the game board.
 ## Testing
 
  - I've given invalid inputs (strings, decimal number, same input twice) to ensure to player is prompted to enter the correct input. 
+ - I confirmed the victory message shows correctly when all ships are sunk.
  - Tested in both my local terminal and Heroku. 
 
 ### Validator Testing
@@ -107,10 +111,6 @@ The code was passed thorugh a [PEP8 Linter](https://pep8ci.herokuapp.com/) and c
  - I observed a problem when attempting to input a set of coordinates. The game incorrectly indicated that the coordinates had already been guessed by the player if they had been used by the computer before. This glitch was traced back to errors in the functionality of the valid_coordinates and player_input functions.
 
  - Additionally, the scores were not incrementing when the player or computer got a successful hit. I discovered this was due to a mismatch between the strings returned from the Grid class methods and the string used in the score updating logic. 
- 
-#### Unfixed Bugs
-
-- No unfixed bugs. 
 
 ## Deployment
 
@@ -123,7 +123,22 @@ This project was deployed using Code Instiute's template for Heroku. To deploy, 
 - Link the Heroku app to the repository
 - Click on 'Deploy'
 
+## Techologies Used
+
+ - ### Languages
+
+   - Python
+   - HTML5
+   - JavaScript
+
+ - ### Libraries and Programs
+
+   - Git
+   - Github
+   - Codeanywhere
+   - Heroku
+
 ## Credits
 
-- Code Institute for the deployment Terminal
-- The sample Ultimate Battleship game for inspiration on the layout and structure of the game and code. 
+- To Code Institute for providing the deployment Terminal.
+- The layout and structure of the game, including class and helper functions, as well as the new game function, draw inspiration from the sample Ultimate Battleship game.
