@@ -118,12 +118,14 @@ def play_game(computer_grid, player_grid):
     print("-" * 75)
     print(f"{player_grid.name}, it's time to attack!")
 
+    # Player's turn
     while True:
-        print("-" * 75)
+        
+        # Displays player's and computer's grid
         player_grid.print_grid()
-        print("-" * 75)
         computer_grid.print_grid()
 
+        # Gets valid player input
         while True:
             player_x, player_y = player_input(player_grid)
 
@@ -132,7 +134,8 @@ def play_game(computer_grid, player_grid):
             else:
                 player_grid.guesses.append((player_x, player_y))
                 break
-
+        
+        # Handles player's guess and displays result
         player_guess_result = computer_grid.guess(player_x, player_y)
         print(f"{player_grid.name} guessed: ({player_x}, {player_y})")
         print(f"{player_grid.name} {player_guess_result}")
@@ -143,6 +146,8 @@ def play_game(computer_grid, player_grid):
             print("You have sunk all the enemy ships! You have won!")
             break
 
+        # Computer's turn
+        # Logic is similar to the player's
         computer_x, computer_y = (
             random_point(computer_grid.size),
             random_point(computer_grid.size)
@@ -211,6 +216,8 @@ def new_game():
     print("Sink or be sunk - the choice is yours! Ready to conquer the seas?")
     print("-" * 75)
     player_name = input("Please enter your name: \n")
+
+    # Default grid size and number of ships
     size = size_ship_input("Enter the grid size (between 4 and 6): ", 4, 6, 5)
     num_ships = size_ship_input("Enter the number of ships between 3 and 5: ",
                                 3, 5, 4)
