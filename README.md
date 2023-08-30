@@ -96,6 +96,8 @@ Each individual battleship is confined to a single square on the game board.
 
 The code was passed thorugh a [PEP8 Linter](https://pep8ci.herokuapp.com/) and confirmed there are no errors found. 
 
+![Validator Results](./images/pep8.jpg)
+
 ### Bugs
 
 #### Solved Bugs
@@ -103,7 +105,7 @@ The code was passed thorugh a [PEP8 Linter](https://pep8ci.herokuapp.com/) and c
  - While running the game, I encountered a KeyError related to the player's name input. I realized that this issue stemmed from mistakenly referencing the player type instead of the player_name variable.
  
  - Additionally, I observed a problem when attempting to input a set of coordinates. The game incorrectly indicated that the coordinates had already been guessed by the player if they had been used by the computer before. This glitch was traced back to errors in the functionality of the valid_coordinates and player_input functions.
- 
+
 #### Unfixed Bugs
 
 - No unfixed bugs. 

@@ -151,14 +151,14 @@ def play_game(computer_grid, player_grid):
             print("Oh no! Your ships have been sunk! The battle is lost!")
             break
 
-        if player_guess_result == "Successful Hit!":
+        if player_guess_result == "successful hit!":
             scores["player"] += 1
-        elif player_guess_result == "Missed!":
+        elif player_guess_result == "missed!":
             scores["player"] += 0
 
-        if computer_guess_result == "Successful Hit!":
+        if computer_guess_result == "successful hit!":
             scores["computer"] += 1
-        elif computer_guess_result == "Missed!":
+        elif computer_guess_result == "missed!":
             scores["computer"] += 0
 
         print("-" * 75)
