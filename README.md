@@ -72,10 +72,25 @@ Each individual battleship is confined to a single square on the game board.
 
  ![Stage 3 of Game](./images/three.jpg)
 
-### Features left to implement
+- End Game 
 
-   - For some ships to cover multiple positions, to be partially sunk. 
-   - 
+  - The game concludes when either the player or the computer successfully sinks all of the opponent's battleships. Depending on the outcome, a distinct message is presented to the user to indicate whether the computer or the player won.
+
+ ![Stage 4 of Game](./images/fourth.jpg)
+
+### Remaining features to implement
+
+- Player-Defined Ship Positions
+ 
+  - Allow players to strategically position their ships before the game.
+
+- Partial Battleship Damage
+
+  - Allow ships to span multiple grid positions and sustain incremental damage, taking multiple guesses to sink one ship.
+
+- Limited Guess Attempts
+
+  - Players get a set number of tries to guess the computer's ship coordinates. Running out of attempts without sinking all ships leads to a loss.
 
 ## Data Model
 
