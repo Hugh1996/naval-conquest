@@ -203,9 +203,9 @@ def new_game():
     player_name = input("Please enter your name: \n")
 
     # Default grid size and number of ships
-    size = size_ship_input("Enter the grid size (between 4 and 6): ", 2, 6, 5)
+    size = size_ship_input("Enter the grid size (between 4 and 6): ", 4, 6, 5)
     num_ships = size_ship_input("Enter the number of ships between 3 and 5: ",
-                                2, 5, 4)
+                                3, 5, 4)
 
     computer_grid = Grid(size, num_ships, "Computer", type="computer")
     player_grid = Grid(size, num_ships, player_name, type="player")
