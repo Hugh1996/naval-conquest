@@ -104,8 +104,10 @@ The code was passed thorugh a [PEP8 Linter](https://pep8ci.herokuapp.com/) and c
 
  - While running the game, I encountered a KeyError related to the player's name input. I realized that this issue stemmed from mistakenly referencing the player type instead of the player_name variable.
  
- - Additionally, I observed a problem when attempting to input a set of coordinates. The game incorrectly indicated that the coordinates had already been guessed by the player if they had been used by the computer before. This glitch was traced back to errors in the functionality of the valid_coordinates and player_input functions.
+ - I observed a problem when attempting to input a set of coordinates. The game incorrectly indicated that the coordinates had already been guessed by the player if they had been used by the computer before. This glitch was traced back to errors in the functionality of the valid_coordinates and player_input functions.
 
+ - Additionally, the scores were not incrementing when the player or computer got a successful hit. I discovered this was due to a mismatch between the strings returned from the Grid class methods and the string used in the score updating logic. 
+ 
 #### Unfixed Bugs
 
 - No unfixed bugs. 
