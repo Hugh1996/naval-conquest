@@ -129,7 +129,8 @@ def play_game(computer_grid, player_grid):
         print(f"{player_grid.name} {player_guess_result}")
 
         # Checks if all computers ships have been sunk and prints result
-        if all((x, y) in computer_grid.guesses for x, y in computer_grid.ships):
+        if all((x, y) in computer_grid.guesses for x, y in
+                computer_grid.ships):
             print("You have sunk all the enemy ships! You have won!")
             break
 
@@ -220,4 +221,3 @@ def new_game():
 
 # Initiates new game
 new_game()
-
